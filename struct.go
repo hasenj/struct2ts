@@ -80,7 +80,7 @@ func (s *Struct) RenderConstructor(opts *Options, w io.Writer) (err error) {
 		fmt.Fprintf(w, "%sconstructor(data = null) {\n", opts.indents[1])
 		fmt.Fprintf(w, "%sconst d = (data && typeof data === 'object') ? ToObject(data) : {};\n", opts.indents[2])
 	} else {
-		fmt.Fprintf(w, "\n%sconstructor(data?: any) {\n", opts.indents[1])
+		fmt.Fprintf(w, "\n%sconstructor(data?: Partial<%s>) {\n", opts.indents[1], s.Name)
 		fmt.Fprintf(w, "%sconst d: any = (data && typeof data === 'object') ? ToObject(data) : {};\n", opts.indents[2])
 	}
 
